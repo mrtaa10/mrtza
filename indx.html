@@ -1,0 +1,49 @@
+def main():
+    tasks = []
+    
+    while True:
+        print("\n--- نظام إدارة المهام البسيط ---")
+        print("1. عرض المهام")
+        print("2. إضافة مهمة")
+        print("3. حذف مهمة")
+        print("4. خروج")
+        
+        choice = input("اختر عملية (1-4): ")
+        
+        if choice == '1':
+            print("\nمهامك الحالية:")
+            if not tasks:
+                print("القائمة فارغة.")
+            else:
+                for index, task in enumerate(tasks, start=1):
+                    print(f"{index}. {task}")
+                    
+        elif choice == '2':
+            new_task = input("اكتب المهمة الجديدة: ")
+            tasks.append(new_task)
+            print("تمت إضافة المهمة بنجاح!")
+            
+        elif choice == '3':
+            if not tasks:
+                print("لا توجد مهام لحذفها.")
+            else:
+                for index, task in enumerate(tasks, start=1):
+                    print(f"{index}. {task}")
+                try:
+                    task_num = int(input("أدخل رقم المهمة المراد حذفها: "))
+                    if 1 <= task_num <= len(tasks):
+                        removed = tasks.pop(task_num - 1)
+                        print(f"تم حذف: {removed}")
+                    else:
+                        print("رقم غير صحيح.")
+                except ValueError:
+                    print("يرجى إدخال رقم فقط.")
+                    
+        elif choice == '4':
+            print("وداعاً!")
+            break
+        else:
+            print("اختيار غير صالح، حاول مرة أخرى.")
+
+if name == "__main__":
+    main()
